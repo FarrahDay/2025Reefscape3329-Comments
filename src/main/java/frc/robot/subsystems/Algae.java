@@ -40,7 +40,7 @@ public class Algae extends SubsystemBase {
     }
 
     public double getEncoderPosition() {
-        return encoder.get() - 0.6646;
+        return encoder.get();
     }
 
     public boolean isAtPosition() {

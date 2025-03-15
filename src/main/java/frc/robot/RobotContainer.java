@@ -30,17 +30,17 @@ public class RobotContainer {
   public RobotContainer() {
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Autonomous Chooser", autoChooser);
-    NamedCommands.registerCommand("L1Config", new L1Config(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("L2Config", new L2Config(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("L3Config", new L3Config(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("L4Config", new L4Config(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("CSConfig", new CSConfig(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("IntakeCoral", m_Coral.intakeCoralCommand());
-    NamedCommands.registerCommand("EjectCoral", m_Coral.ejectCoralCommand());
+    //NamedCommands.registerCommand("L1Config", new L1Config(m_Elevator, m_Coral, m_Algae));
+    //NamedCommands.registerCommand("L2Config", new L2Config(m_Elevator, m_Coral, m_Algae));
+    //NamedCommands.registerCommand("L3Config", new L3Config(m_Elevator, m_Coral, m_Algae));
+    //NamedCommands.registerCommand("L4Config", new L4Config(m_Elevator, m_Coral, m_Algae));
+    //NamedCommands.registerCommand("CSConfig", new CSConfig(m_Elevator, m_Coral, m_Algae));
+    //NamedCommands.registerCommand("IntakeCoral", m_Coral.intakeCoralCommand());
+    //NamedCommands.registerCommand("EjectCoral", m_Coral.ejectCoralCommand());
     setMotorBrake(true);
     drivebase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     configureBindings();
-    autoChooser.setDefaultOption("None", stay);
+    autoChooser.setDefaultOption("None", null);
   }
 
   SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(), () -> forward, () -> strafe)
@@ -53,7 +53,7 @@ public class RobotContainer {
     m_operatorController.povLeft().onTrue(new L1Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.povDown().onTrue(new L2Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.povUp().onTrue(new L3Config(m_Elevator, m_Coral, m_Algae));
-    m_operatorController.povRight().onTrue(new L4Config(m_Elevator, m_Coral, m_Algae));
+    //m_operatorController.povRight().onTrue(new L4Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.a().onTrue(new CSConfig(m_Elevator, m_Coral, m_Algae));
     m_operatorController.leftBumper().whileTrue(m_Coral.intakeCoralCommand());
     m_operatorController.rightBumper().whileTrue(m_Coral.ejectCoralCommand());

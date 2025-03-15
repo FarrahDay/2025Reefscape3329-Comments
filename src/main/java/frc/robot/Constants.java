@@ -14,15 +14,14 @@ public final class Constants {
     public static final int leftID = 14;
     public static final double maxVelocity = 0.3;
     public static final double maxAcceleration = 0.3;
-    public static final double L1 = 3.5;
-    public static final double L2 = 12.7;
-    public static final double L3 = 26.1;
+    public static final double L1 = 3.5;     //about 1 inch per 0.7 revolutions
+    public static final double L2 = 14.45;
+    public static final double L3 = 27.675;
     public static final double L4 = 43.05;
     public static final double A1 = 24.261;
     public static final double A2 = 37.404;
     public static final double P = 5.881;
-    public static final double CS = 9.5
-    ;
+    public static final double CS = 9.85;
   }
 
   public static class CoralConstants {
@@ -41,7 +40,7 @@ public final class Constants {
     public static final double L1 = 0.158;
     public static final double L2 = 0;
     public static final double L3 = 0;
-    public static final double L4 = 0.115;
+    public static final double L4 = 0.105;
     public static final double A1 = 0.25;
     public static final double A2 = 0.25;
     public static final double P = 0.25;
