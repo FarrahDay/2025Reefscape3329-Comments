@@ -28,7 +28,6 @@ public final class Constants {
     public static final int pivotID = 15;
     public static final int intakeID = 16;
     public static final int encoderID = 0;
-    public static final double testAngle = 45;
     public static final double intakeSpeed = 0.3;
     public static final double ejectSpeed = 0.3;
     public static final double kP = 3.2;  //4
