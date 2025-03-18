@@ -40,7 +40,7 @@ public class Algae extends SubsystemBase {
     }
 
     public double getEncoderPosition() {
-        return encoder.get();
+        return encoder.get() - 0.499;
     }
 
     public boolean isAtPosition() {
@@ -49,18 +49,18 @@ public class Algae extends SubsystemBase {
 
     public Command moveAlgaeCommand(double degrees) {
         return Commands.runOnce(() -> this.setTarget(degrees))
-                       .andThen(Commands.waitSeconds(1.2))
+                       .andThen(Commands.waitSeconds(0.5))
                        .until(() -> isAtPosition());
     }
 
     public void runIntake(double speed) {
-        intake.set(speed);
+        intake.set(-speed);
     }
 
     public Command intakeAlgaeCommand() {
         return this.runEnd(
             () -> this.runIntake(Constants.AlgaeConstants.intakeSpeed),
-            () -> this.runIntake(0.3)
+            () -> this.runIntake(0.5)
         );
     }
 

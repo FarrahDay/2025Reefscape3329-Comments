@@ -53,7 +53,7 @@ public class RobotContainer {
     m_operatorController.povLeft().onTrue(new L1Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.povDown().onTrue(new L2Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.povUp().onTrue(new L3Config(m_Elevator, m_Coral, m_Algae));
-    //m_operatorController.povRight().onTrue(new L4Config(m_Elevator, m_Coral, m_Algae));
+    m_operatorController.povRight().onTrue(new L4Config(m_Elevator, m_Coral, m_Algae));
     m_operatorController.a().onTrue(new CSConfig(m_Elevator, m_Coral, m_Algae));
     m_operatorController.leftBumper().whileTrue(m_Coral.intakeCoralCommand());
     m_operatorController.rightBumper().whileTrue(m_Coral.ejectCoralCommand());
