@@ -26,7 +26,7 @@ public class Coral extends SubsystemBase{
         pivot = new SparkMax(Constants.CoralConstants.pivotID, MotorType.kBrushless);
         intake = new SparkMax(Constants.CoralConstants.intakeID, MotorType.kBrushless);
         encoder = new DutyCycleEncoder(Constants.CoralConstants.encoderID);
-        setTarget(0.30);
+        setTarget(0.27);
     }
 
     public void runPivot(double speed){

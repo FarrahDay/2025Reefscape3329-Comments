@@ -17,8 +17,10 @@ public class Algae extends SubsystemBase {
     SparkMax pivot, intake;
     DutyCycleEncoder encoder;
     double target;
+    Elevator elevator;
 
-    public Algae() {
+    public Algae(Elevator elevator) {
+        this.elevator = elevator;
         pid = new ProfiledPIDController(Constants.AlgaeConstants.kP,
                                         Constants.AlgaeConstants.kI,
                                         Constants.AlgaeConstants.kD,
@@ -60,7 +62,11 @@ public class Algae extends SubsystemBase {
     public Command intakeAlgaeCommand() {
         return this.runEnd(
             () -> this.runIntake(Constants.AlgaeConstants.intakeSpeed),
-            () -> this.runIntake(0.5)
+            () -> {
+            this.runIntake(Constants.AlgaeConstants.holdSpeed);
+            elevator.moveElevatorCommand(elevator.getEncoderPosition() + 1.4);
+            //moveAlgaeCommand(getEncoderPosition() + 0.05);
+            }
         );
     }
 
