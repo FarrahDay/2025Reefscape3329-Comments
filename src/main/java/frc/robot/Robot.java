@@ -93,14 +93,17 @@ public class Robot extends TimedRobot {
     m_robotContainer.forward = -this.forward;
     m_robotContainer.strafe = -this.strafe;
     if(m_robotContainer.m_driverController.a().getAsBoolean() && targetVisible){
+      turnPID.setSetpoint(0);
       turn = -turnPID.calculate(targetYaw);
     }
     else if(m_robotContainer.m_driverController.b().getAsBoolean() && targetVisible){
-      turn = turnPID.calculate(0);
+      turnPID.setSetpoint(180);
+      turn = turnPID.calculate(targetYaw);
     }
     m_robotContainer.turn = this.turn;
     SmartDashboard.putBoolean("Visible", targetVisible);
     SmartDashboard.putNumber("Target Yaw", targetYaw);
+    SmartDashboard.putNumber("PID Setpoint", turnPID.getSetpoint());
   }
 
   @Override
