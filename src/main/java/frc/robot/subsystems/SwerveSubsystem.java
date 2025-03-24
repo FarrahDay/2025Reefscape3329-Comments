@@ -82,6 +82,10 @@ public class SwerveSubsystem extends SubsystemBase {
     return Commands.runOnce(() -> swerveDrive.zeroGyro()).andThen(Commands.waitSeconds(0.5));
   }
 
+  public Rotation2d getGyro(){
+    return swerveDrive.getYaw();
+  }
+
   public void setupPathPlanner() {
     RobotConfig config;
     try {

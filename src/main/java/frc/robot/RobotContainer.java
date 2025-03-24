@@ -31,12 +31,12 @@ public class RobotContainer {
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData("Autonomous Chooser", autoChooser);
     //NamedCommands.registerCommand("L1Config", new L1Config(m_Elevator, m_Coral, m_Algae));
-    //NamedCommands.registerCommand("L2Config", new L2Config(m_Elevator, m_Coral, m_Algae));
+    NamedCommands.registerCommand("L2Config", new L2Config(m_Elevator, m_Coral, m_Algae));
     //NamedCommands.registerCommand("L3Config", new L3Config(m_Elevator, m_Coral, m_Algae));
     //NamedCommands.registerCommand("L4Config", new L4Config(m_Elevator, m_Coral, m_Algae));
     //NamedCommands.registerCommand("CSConfig", new CSConfig(m_Elevator, m_Coral, m_Algae));
     //NamedCommands.registerCommand("IntakeCoral", m_Coral.intakeCoralCommand());
-    //NamedCommands.registerCommand("EjectCoral", m_Coral.ejectCoralCommand());
+    NamedCommands.registerCommand("EjectCoral", m_Coral.ejectCoralCommand());
     setMotorBrake(true);
     drivebase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     configureBindings();
@@ -63,8 +63,6 @@ public class RobotContainer {
     m_operatorController.x().onTrue(new PConfig(m_Elevator, m_Coral, m_Algae));
     m_operatorController.leftTrigger().whileTrue(m_Algae.intakeAlgaeCommand());
     m_operatorController.rightTrigger().whileTrue(m_Algae.ejectAlgaeCommand());
-    //m_operatorController.a().onTrue(m_Algae.moveAlgaeCommand(0));
-    //m_operatorController.b().onTrue(m_Algae.moveAlgaeCommand(0.24));
 
     m_driverController.x().onTrue(drivebase.zeroGyro());
   }

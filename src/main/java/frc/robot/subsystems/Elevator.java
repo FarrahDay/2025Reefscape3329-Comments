@@ -37,7 +37,7 @@ public class Elevator extends SubsystemBase {
     }
 
     public boolean isAtPosition() {
-        return getEncoderPosition() < target + 0.5 && getEncoderPosition() > target - 0.5;
+        return getEncoderPosition() < target + 0.6 && getEncoderPosition() > target - 0.6;
     }
 
     public Command moveElevatorCommand(double degrees) {
@@ -49,7 +49,7 @@ public class Elevator extends SubsystemBase {
     @Override
     public void periodic() {
         if (!isAtPosition() && getEncoderPosition() < target) {
-            run(0.2);
+            run(0.3);
         } else if (!isAtPosition() && getEncoderPosition() > target) {
             run(-0.15);
         } else {
