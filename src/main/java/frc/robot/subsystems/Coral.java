@@ -16,16 +16,20 @@ public class Coral extends SubsystemBase{
     ProfiledPIDController pid;
     SparkMax pivot, intake;
     DutyCycleEncoder encoder;
+
     double target;
+
     public Coral(){
         pid = new ProfiledPIDController(Constants.CoralConstants.kP,
                                         Constants.CoralConstants.kI,
                                         Constants.CoralConstants.kD,
                                         new Constraints(Constants.CoralConstants.maxVelocity,
                                                         Constants.CoralConstants.maxAcceleration));
+
         pivot = new SparkMax(Constants.CoralConstants.pivotID, MotorType.kBrushless);
         intake = new SparkMax(Constants.CoralConstants.intakeID, MotorType.kBrushless);
         encoder = new DutyCycleEncoder(Constants.CoralConstants.encoderID);
+
         setTarget(0.27);
     }
 
@@ -70,6 +74,7 @@ public class Coral extends SubsystemBase{
     @Override
     public void periodic(){
         runPivot(pid.calculate(getEncoderPosition()));
+        
         SmartDashboard.putNumber("Coral Position", getEncoderPosition());
         SmartDashboard.putNumber("Coral Target", target);
         SmartDashboard.putBoolean("Coral At Position", isAtPosition());

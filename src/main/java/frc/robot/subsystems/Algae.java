@@ -16,8 +16,9 @@ public class Algae extends SubsystemBase {
     ProfiledPIDController pid;
     SparkMax pivot, intake;
     DutyCycleEncoder encoder;
-    double target;
     Elevator elevator;
+
+    double target;
 
     public Algae(Elevator elevator) {
         this.elevator = elevator;
@@ -26,9 +27,11 @@ public class Algae extends SubsystemBase {
                                         Constants.AlgaeConstants.kD,
                                         new Constraints(Constants.AlgaeConstants.maxVelocity,
                                                         Constants.AlgaeConstants.maxAcceleration));
+
         pivot = new SparkMax(Constants.AlgaeConstants.pivotID, MotorType.kBrushless);
         intake = new SparkMax(Constants.AlgaeConstants.intakeID, MotorType.kBrushed);
         encoder = new DutyCycleEncoder(Constants.AlgaeConstants.encoderID);
+
         setTarget(0.24);
     }
 
@@ -80,6 +83,7 @@ public class Algae extends SubsystemBase {
     @Override
     public void periodic() {
         runPivot(pid.calculate(getEncoderPosition()));
+
         SmartDashboard.putNumber("Algae Position", getEncoderPosition());
         SmartDashboard.putNumber("Algae Target", target);
         SmartDashboard.putBoolean("Algae At Position", isAtPosition());

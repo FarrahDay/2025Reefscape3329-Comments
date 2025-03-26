@@ -40,10 +40,13 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {}
 
+
+  // sets up the Command variable and makes sure the robot is stopped upon startup
   @Override
   public void autonomousInit() {
     m_robotContainer.setMotorBrake(true);
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
@@ -63,22 +66,28 @@ public class Robot extends TimedRobot {
     strafePID = new PIDController(Constants.VisionConstants.strafeP, 
                                   Constants.VisionConstants.strafeI, 
                                   Constants.VisionConstants.strafeD);
+    
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
   }
 
+
+  // controls robot movement, both human and camera
   @Override
-  public void teleopPeriodic() {
+  public void teleopPeriodic() {      
     forward = m_robotContainer.m_driverController.getLeftY();
     strafe = m_robotContainer.m_driverController.getLeftX();
     turn = m_robotContainer.m_driverController.getRightX();
+
     getVisionData();
+
     /*if(m_robotContainer.m_driverController.povLeft().getAsBoolean() && targetVisible){
       runTurn(0);
       runForwardOffsets(runForward(0.5), runStrafe(0));
       runStrafeOffsets(runForward(0.5), runStrafe(0));
     }*/
+
     SmartDashboard.putBoolean("Visible", targetVisible);
     SmartDashboard.putNumber("Target Distance", targetDistance);
     SmartDashboard.putNumber("Target Yaw", targetYaw);
@@ -86,15 +95,20 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Forward Goal", forwardPID.atSetpoint());
     SmartDashboard.putBoolean("Strafe Goal", strafePID.atSetpoint());
     SmartDashboard.putBoolean("Turn Goal", turnPID.atSetpoint());
+
     m_robotContainer.forward = -this.forward;
     m_robotContainer.strafe = -this.strafe;
     m_robotContainer.turn = this.turn;
   }
   
-  public void getVisionData(){
+
+  // checks to see if the camera sees a target. if it sees a target, it calculates how far away it is
+  public void getVisionData(){     
     var results = camera.getAllUnreadResults();
+
     if(!results.isEmpty()){
       var result = results.get(results.size() - 1);
+
       if(result.hasTargets()){
         targetVisible = true;
         tag = result.getBestTarget();
@@ -108,6 +122,8 @@ public class Robot extends TimedRobot {
     }
   }
 
+
+  // finds the forward, strafe and turn values needed to get to the target 
   public double runForward(double target){
     forwardPID.setSetpoint(target);
     return forwardPID.calculate(targetDistance);
@@ -123,6 +139,8 @@ public class Robot extends TimedRobot {
     turn = -turnPID.calculate(targetYaw);
   }
 
+
+  // ?
   public void runForwardOffsets(double forward, double strafe){
     int tagID = tag.getFiducialId();
     if(tagID == 17 || tagID == 8){

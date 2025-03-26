@@ -13,12 +13,14 @@ import frc.robot.Constants;
 public class Elevator extends SubsystemBase {
     SparkMax left, right;
     RelativeEncoder encoder;
+    
     double target;
 
     public Elevator() {
         right = new SparkMax(Constants.ElevatorConstants.rightID, MotorType.kBrushless);
         left = new SparkMax(Constants.ElevatorConstants.leftID, MotorType.kBrushless);
         encoder = left.getEncoder();
+
         encoder.setPosition(0);
         setTarget(0);
     }
@@ -55,6 +57,7 @@ public class Elevator extends SubsystemBase {
         } else {
             run(0.05);
         }
+        
         SmartDashboard.putNumber("Elevator Position", getEncoderPosition());
         SmartDashboard.putNumber("Elevator Target", target);
         SmartDashboard.putBoolean("Elevator At Position", isAtPosition());
