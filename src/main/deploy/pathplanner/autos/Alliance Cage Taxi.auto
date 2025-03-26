@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Alliance Cage to Off-Line"
+            "pathName": "Alliance Cage Taxi"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": "Alliance Cage",
+  "folder": null,
   "choreoAuto": false
 }

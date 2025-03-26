@@ -39,7 +39,7 @@ public class Coral extends SubsystemBase{
     }
 
     public double getEncoderPosition(){
-        return encoder.get() - 0.2827;
+        return encoder.get() - 0.1227;
     }
 
     public boolean isAtPosition(){
@@ -61,6 +61,10 @@ public class Coral extends SubsystemBase{
 
     public Command ejectCoralCommand(){
         return this.runEnd(() -> this.runIntake(-Constants.CoralConstants.ejectSpeed), () -> this.runIntake(0));
+    }
+
+    public Command stopCoralCommand(){
+        return this.runEnd(() -> this.runIntake(0), () -> this.runIntake(0));
     }
 
     @Override

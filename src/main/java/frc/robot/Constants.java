@@ -15,13 +15,13 @@ public final class Constants {
     public static final double maxVelocity = 0.3;
     public static final double maxAcceleration = 0.3;
     public static final double L1 = 3.5;     //about 1 inch per 0.7 revolutions
-    public static final double L2 = 14.45  - 0.7 * 1.5 - 1.4 - 2.1 - 0.75 * 0.7;
-    public static final double L3 = 27.675 - 0.7 * 1.5 - 1.4 - 3.5;
-    public static final double L4 = 43.05 - 0.7;
+    public static final double L2 = 14.45  - 0.7 * 1.5 - 1.4 - 2.1 - 0.75 * 0.7 - 2.1 - 0.7 * 2.5 + 0.7 * 0.25 - 0.7;
+    public static final double L3 = 27.675 - 0.7 * 1.5 - 1.4 - 3.5 - 1.4 - 2.1;
+    public static final double L4 = 43.05 - 0.7 + 0.35 - 1.4 + 0.7 + 0.35;
     public static final double A1 = 24.261 - 0.7 - 1.4;
     public static final double A2 = 37.404 - 0.7 - 1.4;
     public static final double P = 5.881;
-    public static final double CS = 9.85 - 3.5 - 1.4;
+    public static final double CS = 2.75;
   }
 
   public static class CoralConstants {
@@ -38,11 +38,11 @@ public final class Constants {
     public static final double L1 = 0.158 - 0.05;
     public static final double L2 = 0.025;
     public static final double L3 = 0.025;
-    public static final double L4 = 0.015;
+    public static final double L4 = -0.025;
     public static final double A1 = 0.25;
     public static final double A2 = 0.25;
     public static final double P = 0.25;
-    public static final double CS = 0.184;
+    public static final double CS = 0.165;
   }
 
   public static class AlgaeConstants {

@@ -7,8 +7,6 @@ import swervelib.SwerveInputStream;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.commands.PathPlannerAuto;
-
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,18 +23,15 @@ public class RobotContainer {
   public double forward = 0;
   public double strafe = 0;
   public double turn = 0;
-  public PathPlannerAuto stay = new PathPlannerAuto("Stay");
 
   public RobotContainer() {
     autoChooser = AutoBuilder.buildAutoChooser();
-    SmartDashboard.putData("Autonomous Chooser", autoChooser);
-    //NamedCommands.registerCommand("L1Config", new L1Config(m_Elevator, m_Coral, m_Algae));
-    NamedCommands.registerCommand("L2Config", new L2Config(m_Elevator, m_Coral, m_Algae));
-    //NamedCommands.registerCommand("L3Config", new L3Config(m_Elevator, m_Coral, m_Algae));
-    //NamedCommands.registerCommand("L4Config", new L4Config(m_Elevator, m_Coral, m_Algae));
-    //NamedCommands.registerCommand("CSConfig", new CSConfig(m_Elevator, m_Coral, m_Algae));
-    //NamedCommands.registerCommand("IntakeCoral", m_Coral.intakeCoralCommand());
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+    NamedCommands.registerCommand("L3Config", new L3Config(m_Elevator, m_Coral, m_Algae));
+    NamedCommands.registerCommand("CSConfig", new CSConfig(m_Elevator, m_Coral, m_Algae));
+    NamedCommands.registerCommand("IntakeCoral", m_Coral.intakeCoralCommand());
     NamedCommands.registerCommand("EjectCoral", m_Coral.ejectCoralCommand());
+    NamedCommands.registerCommand("StopCoral", m_Coral.stopCoralCommand());
     setMotorBrake(true);
     drivebase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     configureBindings();

@@ -11,13 +11,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "New Path"
+                  "pathName": "Anchor to Right Reef 2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "L2Config"
+                  "name": "L3Config"
                 }
               }
             ]
@@ -27,6 +27,18 @@
           "type": "named",
           "data": {
             "name": "EjectCoral"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.5
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "StopCoral"
           }
         }
       ]

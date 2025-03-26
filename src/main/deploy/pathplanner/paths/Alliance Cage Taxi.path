@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.0387624172185432,
-        "y": 1.0249379139072858
+        "x": 7.57840909090909,
+        "y": 6.16390625
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8899406877064124,
-        "y": 1.883331568480839
+        "x": 7.289621831908587,
+        "y": 6.358408099829162
       },
       "isLocked": false,
-      "linkedName": "Right Coral"
+      "linkedName": "Alliance Cage"
     },
     {
       "anchor": {
-        "x": 3.726469370860927,
-        "y": 3.022557947019867
+        "x": 5.643920454545454,
+        "y": 5.864758522727272
       },
       "prevControl": {
-        "x": 2.0481926661554057,
-        "y": 2.3462068624515413
+        "x": 6.904851907820229,
+        "y": 5.9907617087189
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Left Reef 4"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -38,7 +38,7 @@
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
-    "unlimited": true
+    "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
@@ -48,7 +48,7 @@
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -125.00000000000001
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

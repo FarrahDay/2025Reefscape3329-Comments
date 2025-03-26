@@ -74,11 +74,11 @@ public class Robot extends TimedRobot {
     strafe = m_robotContainer.m_driverController.getLeftX();
     turn = m_robotContainer.m_driverController.getRightX();
     getVisionData();
-    if(m_robotContainer.m_driverController.povLeft().getAsBoolean() && targetVisible){
+    /*if(m_robotContainer.m_driverController.povLeft().getAsBoolean() && targetVisible){
       runTurn(0);
       runForwardOffsets(runForward(0.5), runStrafe(0));
       runStrafeOffsets(runForward(0.5), runStrafe(0));
-    }
+    }*/
     SmartDashboard.putBoolean("Visible", targetVisible);
     SmartDashboard.putNumber("Target Distance", targetDistance);
     SmartDashboard.putNumber("Target Yaw", targetYaw);
@@ -86,8 +86,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Forward Goal", forwardPID.atSetpoint());
     SmartDashboard.putBoolean("Strafe Goal", strafePID.atSetpoint());
     SmartDashboard.putBoolean("Turn Goal", turnPID.atSetpoint());
-    m_robotContainer.forward = this.forward;
-    m_robotContainer.strafe = this.strafe;
+    m_robotContainer.forward = -this.forward;
+    m_robotContainer.strafe = -this.strafe;
     m_robotContainer.turn = this.turn;
   }
   
@@ -120,27 +120,27 @@ public class Robot extends TimedRobot {
 
   public void runTurn(double target){
     turnPID.setSetpoint(target);
-    turn = turnPID.calculate(targetYaw);
+    turn = -turnPID.calculate(targetYaw);
   }
 
   public void runForwardOffsets(double forward, double strafe){
     int tagID = tag.getFiducialId();
-    if(tagID == 17){
+    if(tagID == 17 || tagID == 8){
       this.forward = strafe * Math.sin(60) + forward * Math.cos(60);
     }
-    else if(tagID == 18){
+    else if(tagID == 18 || tagID == 7){
       this.forward = forward;
     }
-    else if(tagID == 19){
+    else if(tagID == 19 || tagID == 6){
       this.forward = strafe * Math.sin(-60) + forward * Math.cos(-60);
     }
-    else if(tagID == 20){
+    else if(tagID == 20 || tagID == 11){
       this.forward = strafe * Math.sin(-120) + forward * Math.cos(-60);
     }
-    else if (tagID == 21){
+    else if (tagID == 21 || tagID == 10){
       this.forward = -forward;
     }
-    else if(tagID == 22){
+    else if(tagID == 22 || tagID == 9){
       this.forward = strafe * Math.sin(120) + this.forward * Math.cos(120);
     }
   }
